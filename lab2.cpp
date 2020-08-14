@@ -25,7 +25,7 @@ int main(int argc,char *argv[])
     MPI_Comm_rank(MPI_COMM_WORLD,&myid);
 	int* mpi_buffer=(int*)malloc(sizeof(int)*1000000);
 	MPI_Buffer_attach(mpi_buffer,sizeof(int)*1000000);
-	start = clock();
+	start = MPI_Wtime();
 	for(j=0;j<2000;j++)
 	{
 		if(myid != 0)			
@@ -59,7 +59,7 @@ int main(int argc,char *argv[])
         car_list[i].pos += car_list[i].v;
         MPI_Barrier(MPI_COMM_WORLD);
     }
-    end = clock();
+    end = MPI_Wtime();
     printf("%.3lf\n",(double)(end - start));
 	MPI_Finalize();
 }
