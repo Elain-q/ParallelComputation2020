@@ -60,6 +60,6 @@ int main(int argc,char *argv[])
         MPI_Barrier(MPI_COMM_WORLD);
     }
     end = clock();
-    printf("%.3f\n",end - start);
+    printf("%.3lf\n",(double)(end - start));
 	MPI_Finalize();
 }
